@@ -86,7 +86,7 @@ class TablePosWrapper(FactorWrapper):
         body = self.model.body(body_name)
       except KeyError as e:
         continue
-      self._default[body.name] = body.pos.copy()
+      body.pos = self._default[body_name] + delta_pos
 
     # Change init position of the object.
     obj_init_pos = self._default['obj_init_pos'] + delta_pos

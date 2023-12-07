@@ -262,24 +262,3 @@ class FactorWrapper:
   @property
   def object_name(self):
     return self.env.object_name
-
-
-if __name__ == '__main__':
-  from metaworld import MT1
-  from factorworld.envs.factors.light import LightWrapper
-
-  env_name = 'pick-place-v2'
-
-  benchmark = MT1(env_name)
-  env_constructor = MT1(env_name).train_classes[env_name]
-  base_env = env_constructor(render_mode = 'rgb_array')
-  base_env.set_task(benchmark.train_tasks[0])
-
-  env = LightWrapper(base_env)
-
-  for e in range(10):
-    obs = env.reset()
-
-    for _ in range(100):
-      env.step(env.action_space.sample())
-      env.render()

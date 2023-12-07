@@ -19,6 +19,7 @@ from factorworld.envs.factors.light import LightWrapper
 from factorworld.envs.factors.camera_pos import CameraPosWrapper
 from factorworld.envs.factors.arm_pos import ArmPosWrapper
 from factorworld.envs.factors.table_pos import TablePosWrapper
+from factorworld.envs.factors.obj_pos import ObjectPosWrapper
 
 ALL_FACTORS: Dict[str, FactorWrapper] = {
     'arm_pos': ArmPosWrapper,
@@ -26,7 +27,7 @@ ALL_FACTORS: Dict[str, FactorWrapper] = {
     # 'distractor_pos': DistractorPosWrapper,
     # 'floor_texture': FloorTextureWrapper,
     'light': LightWrapper,
-    # 'object_pos': ObjectPosWrapper,
+    'object_pos': ObjectPosWrapper,
     # 'object_size': ObjectSizeWrapper,
     # 'object_texture': ObjectTextureWrapper,
     'table_pos': TablePosWrapper,

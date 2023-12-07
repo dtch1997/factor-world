@@ -16,10 +16,12 @@ from typing import Any, Dict
 
 from factorworld.envs.factors.factor_wrapper import FactorWrapper
 from factorworld.envs.factors.light import LightWrapper
+from factorworld.envs.factors.camera_pos import CameraPosWrapper
+from factorworld.envs.factors.arm_pos import ArmPosWrapper
 
 ALL_FACTORS: Dict[str, FactorWrapper] = {
-    # 'arm_pos': ArmPosWrapper,
-    # 'camera_pos': CameraPosWrapper,
+    'arm_pos': ArmPosWrapper,
+    'camera_pos': CameraPosWrapper,
     # 'distractor_pos': DistractorPosWrapper,
     # 'floor_texture': FloorTextureWrapper,
     'light': LightWrapper,

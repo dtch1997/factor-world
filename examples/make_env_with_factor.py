@@ -19,6 +19,7 @@ if __name__ == "__main__":
     env_constructor = benchmark.train_classes[config.domain]
     base_env = env_constructor(render_mode = config.render_mode)
     base_env.set_task(benchmark.train_tasks[0])
+    base_env.reset()
 
     env = ALL_FACTORS[config.factor](base_env)
 

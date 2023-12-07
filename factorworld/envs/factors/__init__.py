@@ -18,6 +18,7 @@ from factorworld.envs.factors.factor_wrapper import FactorWrapper
 from factorworld.envs.factors.light import LightWrapper
 from factorworld.envs.factors.camera_pos import CameraPosWrapper
 from factorworld.envs.factors.arm_pos import ArmPosWrapper
+from factorworld.envs.factors.table_pos import TablePosWrapper
 
 ALL_FACTORS: Dict[str, FactorWrapper] = {
     'arm_pos': ArmPosWrapper,
@@ -28,6 +29,6 @@ ALL_FACTORS: Dict[str, FactorWrapper] = {
     # 'object_pos': ObjectPosWrapper,
     # 'object_size': ObjectSizeWrapper,
     # 'object_texture': ObjectTextureWrapper,
-    # 'table_pos': TablePosWrapper,
+    'table_pos': TablePosWrapper,
     # 'table_texture': TableTextureWrapper,
 }

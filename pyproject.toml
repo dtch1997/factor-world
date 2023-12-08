@@ -17,3 +17,70 @@ license = {text = "MIT"}
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
+
+[tool.black]
+line-length = 88
+target-version = ['py39', 'py310']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.github
+  | \.venv
+  | docs
+  | third_party
+  | scratch
+)/
+'''
+
+[tool.ruff]
+line-length = 88
+select = [
+  "E", # pycodestyle
+  "F", # pyflakes
+  "I",
+]
+exclude = ["third_party", ".venv"]
+ignore = ["F841", "E501", "E741", "I001"]
+
+[tool.ruff.extend-per-file-ignores]
+"__init__.py" = ["F401", "F403", "E402"]
+
+[tool.ruff.isort]
+known-first-party = ["cdax"]
+force-single-line = true
+single-line-exclusions = ["typing"]
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.pyright]
+include = ["factorworld"]
+exclude = ["**/__pycache__"]
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+useLibraryCodeForTypes = true
+typeCheckingMode = "basic"
+reportPrivateImportUsage = "none"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "notebook>=7.0.6",
+    "ipykernel>=6.27.1",
+    "matplotlib>=3.8.2",
+    "seaborn>=0.13.0",
+    "ffmpeg>=1.4",
+    "pytest>=7.4.3",
+    "black>=23.11.0",
+    "ruff>=0.1.6",
+    "pyright>=1.1.338",
+    "jupyter>=1.0.0",
+    "pre-commit>=3.5.0",
+    "syrupy>=4.6.0",
+]

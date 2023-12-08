@@ -1,6 +1,7 @@
 # Factor-World
 
-Unofficial implementation of Factor-World environments, 
+Extends Metaworld environments with 10 visual factors of variation. 
+Uses modern `mujoco` bindings and the `gymnasium` interface. 
 
 [![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm-project.org)
 

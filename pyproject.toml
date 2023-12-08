@@ -7,7 +7,7 @@ authors = [
 ]
 dependencies = [
     "pyrallis>=0.3.1",
-    "metaworld @ git+https://github.com/dtch1997/Metaworld.git@master",
+    "metaworld @ git+https://github.com/Farama-Foundation/Metaworld.git@master",
     "numpy>=1.26.2",
 ]
 requires-python = ">=3.10"

@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["cross_platform"]
 lock_version = "4.4"
-content_hash = "sha256:2879d5f7c75b0654d8dad144290f42d263213779c8eb82984942c6dbb33c19fe"
+content_hash = "sha256:b63c8f08f093122cd06ff9856715798294785f7e0c3e5910ac325355cacca847"
 
 [[package]]
 name = "absl-py"
@@ -85,10 +85,10 @@ files = [
 [[package]]
 name = "metaworld"
 version = "2.0.0"
-requires_python = ">=3.8"
-git = "https://github.com/dtch1997/Metaworld.git"
+requires_python = ">= 3.8"
+git = "https://github.com/Farama-Foundation/Metaworld.git"
 ref = "master"
-revision = "6d784bd94cdea82eec5a734f71539ddf7162174a"
+revision = "c822f28f582ba1ad49eb5dcf61016566f28003ba"
 summary = "Collections of robotics environments geared towards benchmarking multi-task and meta reinforcement learning."
 dependencies = [
     "gymnasium>=0.29.0",

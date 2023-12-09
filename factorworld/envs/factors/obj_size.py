@@ -34,7 +34,7 @@ class ObjectSizeWrapper(FactorWrapper):
     ):
         """Creates a new wrapper."""
         # Note: Must set this to None before calling super()__init__().
-        self._geom_name2size = None
+        self._geom_id2size = None
         super().__init__(
             env,
             factor_space=spaces.Box(
@@ -55,11 +55,11 @@ class ObjectSizeWrapper(FactorWrapper):
                 "Body names: {self.model.body_names}"
             )
 
-        # TODO(dtch1997): Correctly initialize self._geom_name2size
-        # 1. Iterate over all geoms (how?)
-        # 2. if geom.bodyid == body.id: add (geom.name: geom.size) to dict
-        self._geom_name2size = {}
-        raise NotImplementedError()
+        self._geom_id2size = {
+            geom_id: self.model.geom_size[geom_id].copy()
+            for geom_id, body_id in enumerate(self.model.geom_bodyid)
+            if body_id == body.id
+        }
 
     @property
     def factor_name(self):
@@ -67,12 +67,12 @@ class ObjectSizeWrapper(FactorWrapper):
 
     def _set_to_factor(self, value: float):
         """Sets to the given factor."""
-        if self._geom_name2size is None:
+        if self._geom_id2size is None:
             print(
                 "WARNING(object_size): Default values not set. "
                 "Not setting factor value."
             )
             return
 
-        for geom_id, geom_size in self._geom_name2size.items():
+        for geom_id, geom_size in self._geom_id2size.items():
             self.unwrapped.model.geom(geom_id).size = geom_size * value

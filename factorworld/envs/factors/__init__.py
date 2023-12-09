@@ -29,7 +29,7 @@ ALL_FACTORS: Dict[str, FactorWrapper] = {
     # 'floor_texture': FloorTextureWrapper,
     "light": LightWrapper,
     "object_pos": ObjectPosWrapper,
-    # "object_size": ObjectSizeWrapper,
+    "object_size": ObjectSizeWrapper,
     # 'object_texture': ObjectTextureWrapper,
     "table_pos": TablePosWrapper,
     # 'table_texture': TableTextureWrapper,

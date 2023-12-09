@@ -55,16 +55,6 @@ single-line-exclusions = ["typing"]
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "all"
 
-[tool.pyright]
-include = ["factorworld"]
-exclude = ["**/__pycache__"]
-
-reportMissingImports = true
-reportMissingTypeStubs = false
-useLibraryCodeForTypes = true
-typeCheckingMode = "basic"
-reportPrivateImportUsage = "none"
-
 [tool.pytest.ini_options]
 minversion = "6.0"
 testpaths = ["tests"]
@@ -79,7 +69,6 @@ dev = [
     "pytest>=7.4.3",
     "black>=23.11.0",
     "ruff>=0.1.6",
-    "pyright>=1.1.338",
     "jupyter>=1.0.0",
     "pre-commit>=3.5.0",
     "syrupy>=4.6.0",

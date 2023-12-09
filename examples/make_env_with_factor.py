@@ -5,19 +5,20 @@ from dataclasses import dataclass
 from metaworld import MT1
 from factorworld.envs.factors import ALL_FACTORS
 
+
 @dataclass
 class Config:
-    domain: str = 'pick-place-v2'
-    factor: str = 'light'
-    render_mode: str = 'human'
+    domain: str = "pick-place-v2"
+    factor: str = "light"
+    render_mode: str = "human"
+
 
 if __name__ == "__main__":
-
     config = pyrallis.parse(Config)
 
     benchmark = MT1(config.domain)
     env_constructor = benchmark.train_classes[config.domain]
-    base_env = env_constructor(render_mode = config.render_mode)
+    base_env = env_constructor(render_mode=config.render_mode)
     base_env.set_task(benchmark.train_tasks[0])
     base_env.reset()
 

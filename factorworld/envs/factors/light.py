@@ -22,30 +22,35 @@ from factorworld.envs.factors.factor_wrapper import FactorWrapper
 
 
 class LightWrapper(FactorWrapper):
-  """Wrapper over MuJoCo environments that modifies lighting."""
+    """Wrapper over MuJoCo environments that modifies lighting."""
 
-  def __init__(self,
-               env: gym.Env,
-               diffuse_range: Tuple[float, float] = (0.2, 0.8),
-               seed: int = None,
-               **kwargs):
-    """Creates a new wrapper."""
-    super().__init__(
-        env,
-        factor_space=spaces.Box(low=np.array(diffuse_range[0]),
-                                high=np.array(diffuse_range[1]),
-                                dtype=np.float32,
-                                seed=seed),
-        **kwargs)
+    def __init__(
+        self,
+        env: gym.Env,
+        diffuse_range: Tuple[float, float] = (0.2, 0.8),
+        seed: int = None,
+        **kwargs,
+    ):
+        """Creates a new wrapper."""
+        super().__init__(
+            env,
+            factor_space=spaces.Box(
+                low=np.array(diffuse_range[0]),
+                high=np.array(diffuse_range[1]),
+                dtype=np.float32,
+                seed=seed,
+            ),
+            **kwargs,
+        )
 
-  @property
-  def factor_name(self):
-    return 'light'
+    @property
+    def factor_name(self):
+        return "light"
 
-  def _set_to_factor(self, value: float):
-    """Sets to the given factor."""
-    self.unwrapped.model.vis.headlight.ambient[:] = np.full((3, ), value)
-    self.unwrapped.model.vis.headlight.diffuse[:] = np.full((3, ), value)
+    def _set_to_factor(self, value: float):
+        """Sets to the given factor."""
+        self.unwrapped.model.vis.headlight.ambient[:] = np.full((3,), value)
+        self.unwrapped.model.vis.headlight.diffuse[:] = np.full((3,), value)
 
-  def __getattr__(self, name: str):
-    return getattr(self.env, name)
+    def __getattr__(self, name: str):
+        return getattr(self.env, name)

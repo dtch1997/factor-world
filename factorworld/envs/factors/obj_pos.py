@@ -23,92 +23,93 @@ from factorworld.envs.factors.factor_wrapper import FactorWrapper
 
 
 class ObjectPosWrapper(FactorWrapper):
-  """Wrapper over MuJoCo environments that modifies object position."""
+    """Wrapper over MuJoCo environments that modifies object position."""
 
-  def __init__(self,
-               env: gym.Env,
-               x_range: Tuple[float, float] = (-0.3, 0.3),
-               y_range: Tuple[float, float] = (-0.1, 0.2),
-               z_range: Tuple[float, float] = (-0, 0),
-               theta_range: Tuple[float, float] = (0, 2 * np.pi),
-               seed: int = None,
-               **kwargs):
-    """Creates a new wrapper."""
-    super().__init__(
-        env,
-        factor_space=spaces.Box(
-            low=np.array([x_range[0], y_range[0], z_range[0], theta_range[0]]),
-            high=np.array(
-                [x_range[1], y_range[1], z_range[1], theta_range[1]]),
-            dtype=np.float32,
-            seed=seed),
-        **kwargs)
+    def __init__(
+        self,
+        env: gym.Env,
+        x_range: Tuple[float, float] = (-0.3, 0.3),
+        y_range: Tuple[float, float] = (-0.1, 0.2),
+        z_range: Tuple[float, float] = (-0, 0),
+        theta_range: Tuple[float, float] = (0, 2 * np.pi),
+        seed: int = None,
+        **kwargs,
+    ):
+        """Creates a new wrapper."""
+        super().__init__(
+            env,
+            factor_space=spaces.Box(
+                low=np.array([x_range[0], y_range[0], z_range[0], theta_range[0]]),
+                high=np.array([x_range[1], y_range[1], z_range[1], theta_range[1]]),
+                dtype=np.float32,
+                seed=seed,
+            ),
+            **kwargs,
+        )
 
-    if hasattr(self, 'object_name'):
-      joint_name = f"joint_{self.object_name}"
-    else:
-      joint_name = 'objjoint'
+        if hasattr(self, "object_name"):
+            joint_name = f"joint_{self.object_name}"
+        else:
+            joint_name = "objjoint"
 
-    try: 
-      joint = self.model.joint(joint_name)
-    except KeyError as e:
-      print(f"WARNING(object_pos): Joint {joint_name} not found.")
-      self.object_init_pos = None
-      self.object_init_quat = None
-    
-    # Store object qpos/qvel indices
-    self.i_qp = joint.qposadr[0]
-    self.i_qv = joint.qposadr[0] # TODO(dtch1997): check if this is correct
-    # Refer to: https://mujoco.readthedocs.io/en/stable/python.html#migration-from-mujoco-py
+        try:
+            joint = self.model.joint(joint_name)
+        except KeyError as e:
+            print(f"WARNING(object_pos): Joint {joint_name} not found.")
+            self.object_init_pos = None
+            self.object_init_quat = None
 
-    qpos = self.data.qpos.flat.copy()
-    self._default_init_pos = self.unwrapped.init_config['obj_init_pos']
-    self._default_init_quat = qpos[self.i_qp + 3:self.i_qp + 7]
+        # Store object qpos/qvel indices
+        self.i_qp = joint.qposadr[0]
+        self.i_qv = joint.qposadr[0]  # TODO(dtch1997): check if this is correct
+        # Refer to: https://mujoco.readthedocs.io/en/stable/python.html#migration-from-mujoco-py
 
-    self.object_init_pos = self._default_init_pos.copy()
-    self.object_init_quat = self._default_init_quat.copy()
+        qpos = self.data.qpos.flat.copy()
+        self._default_init_pos = self.unwrapped.init_config["obj_init_pos"]
+        self._default_init_quat = qpos[self.i_qp + 3 : self.i_qp + 7]
 
-  def reset(self, force_randomize_factor: bool = False):
-    super().reset(force_randomize_factor=force_randomize_factor)
+        self.object_init_pos = self._default_init_pos.copy()
+        self.object_init_quat = self._default_init_quat.copy()
 
-    # Reset object pos.
-    self._set_object_pos(
-        self.object_init_pos,
-        self.object_init_quat)
+    def reset(self, force_randomize_factor: bool = False):
+        super().reset(force_randomize_factor=force_randomize_factor)
 
-    return self.unwrapped._get_obs()
+        # Reset object pos.
+        self._set_object_pos(self.object_init_pos, self.object_init_quat)
 
-  @property
-  def factor_name(self):
-    return 'object_pos'
+        return self.unwrapped._get_obs()
 
-  def _set_to_factor(self, value: Tuple[float, float, float, float]):
-    """Sets to the given factor."""
-    if (not hasattr(self, '_default_init_pos') or
-            not hasattr(self, '_default_init_quat')):
-      print(
-          "WARNING(object_pos): Missing _default_init_pos. Not setting factor.")
-      return
+    @property
+    def factor_name(self):
+        return "object_pos"
 
-    self.object_init_pos = self.unwrapped.init_config['obj_init_pos'] + value[:3]
+    def _set_to_factor(self, value: Tuple[float, float, float, float]):
+        """Sets to the given factor."""
+        if not hasattr(self, "_default_init_pos") or not hasattr(
+            self, "_default_init_quat"
+        ):
+            print("WARNING(object_pos): Missing _default_init_pos. Not setting factor.")
+            return
 
-    delta_radians = value[3]
-    radians = Rotation.from_quat(self._default_init_quat).as_euler('xyz')
-    radians[0] += delta_radians
-    self.object_init_quat = Rotation.from_euler('xyz', radians).as_quat()
+        self.object_init_pos = self.unwrapped.init_config["obj_init_pos"] + value[:3]
 
-  def _set_object_pos(self, pos: np.ndarray, quat: np.ndarray):
-    if not hasattr(self, 'i_qp'):
-      print("WARNING(object_pos): Missing i_qp. Not setting object_pos.")
-      return
+        delta_radians = value[3]
+        radians = Rotation.from_quat(self._default_init_quat).as_euler("xyz")
+        radians[0] += delta_radians
+        self.object_init_quat = Rotation.from_euler("xyz", radians).as_quat()
 
-    assert pos.shape == (3,), pos.shape
-    assert quat.shape == (4,), quat.shape
-    qpos = self.data.qpos.flat.copy()
-    qvel = self.data.qvel.flat.copy()
+    def _set_object_pos(self, pos: np.ndarray, quat: np.ndarray):
+        if not hasattr(self, "i_qp"):
+            print("WARNING(object_pos): Missing i_qp. Not setting object_pos.")
+            return
 
-    qpos[self.i_qp:self.i_qp + 3] = pos
-    qpos[self.i_qp + 3:self.i_qp + 7] = quat
-    qvel[self.i_qv:self.i_qv + 3] = [0, 0, 0]
+        assert pos.shape == (3,), pos.shape
+        assert quat.shape == (4,), quat.shape
+        qpos = self.data.qpos.flat.copy()
+        qvel = self.data.qvel.flat.copy()
 
-    self.set_state(qpos, qvel)
+        qpos[self.i_qp : self.i_qp + 3] = pos
+        qpos[self.i_qp + 3 : self.i_qp + 7] = quat
+        qvel[self.i_qv : self.i_qv + 3] = [0, 0, 0]
+
+        self.set_state(qpos, qvel)

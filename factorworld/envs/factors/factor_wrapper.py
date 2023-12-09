@@ -101,10 +101,6 @@ class FactorWrapper:
     def factor_name(self) -> str:
         """String name of the factor."""
 
-    @abc.abstractmethod
-    def sample_factor_value(self, num_values: int) -> Union[np.ndarray, Dict[str, Any]]:
-        """Returns N sampled factor values over the factor space."""
-
     @property
     def factor_names(self) -> Sequence[str]:
         """Recursively gets factor_names of all unwrapped envs"""

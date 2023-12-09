@@ -21,6 +21,15 @@ from factorworld.envs.factors.arm_pos import ArmPosWrapper
 from factorworld.envs.factors.table_pos import TablePosWrapper
 from factorworld.envs.factors.obj_pos import ObjectPosWrapper
 from factorworld.envs.factors.obj_size import ObjectSizeWrapper
+from factorworld.envs.factors.table_texture import TableTextureWrapper
+
+from factorworld.envs.xml_utils import generate_xml
+from factorworld.envs.xml_utils import get_texture_names
+from factorworld.envs.asset_path_utils import (
+    full_factorworld_assets_path_for,
+    full_metaworld_assets_v2_path_for,
+    get_fw_asset_dir_relative_to_mw_asset_dir,
+)
 
 ALL_FACTORS: Dict[str, FactorWrapper] = {
     "arm_pos": ArmPosWrapper,

@@ -167,6 +167,9 @@ class FactorWrapper:
     # Gym Env
     # ----------------------------------------------------------------
 
+    def __getattr__(self, name: str):
+        return getattr(self.env, name)
+
     def step(self, action):
         return self.env.step(action)
 

@@ -48,7 +48,7 @@ ignore = ["F841", "E501", "E741", "I001"]
 "__init__.py" = ["F401", "F403", "E402"]
 
 [tool.ruff.isort]
-known-first-party = ["cdax"]
+known-first-party = ["factorworld"]
 force-single-line = true
 single-line-exclusions = ["typing"]
 

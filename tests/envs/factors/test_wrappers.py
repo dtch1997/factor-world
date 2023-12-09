@@ -1,16 +1,15 @@
 """ Make a Metaworld env with factors, and render """
 
 import pytest
-from dataclasses import dataclass
 from metaworld import MT1
 from factorworld import list_factors, get_factor
 
-domain = 'pick-place-v2'
+domain = "pick-place-v2"
 factors = list_factors()
 
-@pytest.mark.parametrize('factor_name', list_factors())
-def test_env(factor_name: str):
 
+@pytest.mark.parametrize("factor_name", list_factors())
+def test_env(factor_name: str):
     factor = get_factor(factor_name)
     benchmark = MT1(domain)
     env_constructor = benchmark.train_classes[domain]

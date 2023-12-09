@@ -24,12 +24,12 @@ from factorworld.envs.factors.obj_size import ObjectSizeWrapper
 
 ALL_FACTORS: Dict[str, FactorWrapper] = {
     "arm_pos": ArmPosWrapper,
-    "camera_pos": CameraPosWrapper,
+    # "camera_pos": CameraPosWrapper,
     # 'distractor_pos': DistractorPosWrapper,
     # 'floor_texture': FloorTextureWrapper,
     "light": LightWrapper,
     "object_pos": ObjectPosWrapper,
-    "object_size": ObjectSizeWrapper,
+    # "object_size": ObjectSizeWrapper,
     # 'object_texture': ObjectTextureWrapper,
     "table_pos": TablePosWrapper,
     # 'table_texture': TableTextureWrapper,

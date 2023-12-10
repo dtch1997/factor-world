@@ -27,7 +27,7 @@ from factorworld.envs.factors.floor_texture import FloorTextureWrapper
 
 ALL_FACTORS: Dict[str, FactorWrapper] = {
     "arm_pos": ArmPosWrapper,
-    # "camera_pos": CameraPosWrapper,
+    "camera_pos": CameraPosWrapper,
     # 'distractor_pos': DistractorPosWrapper,
     "floor_texture": FloorTextureWrapper,
     "light": LightWrapper,

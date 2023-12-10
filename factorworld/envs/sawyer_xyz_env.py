@@ -37,6 +37,8 @@ class SawyerMocapBase(mjenv_gym):
             frame_skip=frame_skip,
             observation_space=self.sawyer_observation_space,
             render_mode=render_mode,
+            # TODO: don't hardcode this
+            camera_name="movable",
         )
         self.reset_mocap_welds()
         self.frame_skip = frame_skip

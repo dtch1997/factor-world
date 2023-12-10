@@ -8,6 +8,39 @@ Uses modern `mujoco` bindings and the `gymnasium` interface.
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![test](https://github.com/dtch1997/factor-world/actions/workflows/ci.yaml/badge.svg)](https://github.com/dtch1997/factor-world/actions/workflows/ci.yaml)
 
+
+## Usage
+
+Install the package
+```bash
+pip install --extra-index-url https://test.pypi.org/simple/ factor-world==0.1.1
+```
+
+Then use the factor wrapper as follows:
+```python
+from factorworld.envs import make_env_with_factors
+from factorworld.envs.tasks.sawyer_pick_place_v2 import SawyerPickPlaceEnvV2
+
+env = make_env_with_factors(
+    env_cls = SawyerPickPlaceEnvV2, 
+    env_kwargs = {"render_mode": "human"}, 
+    factor_kwargs = {'table_texture': {}}
+)
+env.reset()
+obs = env.reset()
+print("Current factor: ", env.current_factor_value)
+
+for _ in range(100):
+    env.step(env.action_space.sample())
+    env.render()
+```
+
+For a list of all available factors:
+```
+from factorworld.envs import list_factors
+print(list_factors())
+```
+
 ## Citation
 
 Factor-World was proposed in [Decomposing the Generalization Gap in Imitation Learning for Visual Robotic Manipulation](https://sites.google.com/view/generalization-gap)

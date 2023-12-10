@@ -14,6 +14,7 @@ factors = [
     "light",
     "table_texture",
     "object_texture",
+    "floor_texture",
 ]
 
 

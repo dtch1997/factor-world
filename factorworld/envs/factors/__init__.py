@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Any, Dict
+from typing import Dict
 
 from factorworld.envs.factors.factor_wrapper import FactorWrapper
 from factorworld.envs.factors.light import LightWrapper
@@ -23,20 +23,13 @@ from factorworld.envs.factors.obj_pos import ObjectPosWrapper
 from factorworld.envs.factors.obj_size import ObjectSizeWrapper
 from factorworld.envs.factors.table_texture import TableTextureWrapper
 from factorworld.envs.factors.object_texture import ObjectTextureWrapper
-
-from factorworld.envs.xml_utils import generate_xml
-from factorworld.envs.xml_utils import get_texture_names
-from factorworld.envs.asset_path_utils import (
-    full_factorworld_assets_path_for,
-    full_metaworld_assets_v2_path_for,
-    get_fw_asset_dir_relative_to_mw_asset_dir,
-)
+from factorworld.envs.factors.floor_texture import FloorTextureWrapper
 
 ALL_FACTORS: Dict[str, FactorWrapper] = {
     "arm_pos": ArmPosWrapper,
     # "camera_pos": CameraPosWrapper,
     # 'distractor_pos': DistractorPosWrapper,
-    # 'floor_texture': FloorTextureWrapper,
+    "floor_texture": FloorTextureWrapper,
     "light": LightWrapper,
     "object_pos": ObjectPosWrapper,
     "object_size": ObjectSizeWrapper,

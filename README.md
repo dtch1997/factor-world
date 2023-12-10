@@ -46,6 +46,8 @@ print(list_factors())
 ### Factors
 
 Here is a visualization of some of the factors of variation
+
+Left to right: `table_texture`, `camera_pos`, `object_pos`
 <div style="display: flex; justify-content: space-between;">
     <img src="docs/assets/table_texture.gif" alt="GIF 1" width="30%">
     <img src="docs/assets/camera_pos.gif" alt="GIF 2" width="30%">

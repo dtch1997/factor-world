@@ -8,9 +8,8 @@ from factorworld.envs.tasks.sawyer_pick_place_v2 import SawyerPickPlaceEnvV2
 
 @dataclass
 class Config:
-    domain: str = "pick-place-v2"
+    domain: str = "pick-place-v2"  # unused for now...
     factor: str = "light"
-    render_mode: str = "human"
 
 
 if __name__ == "__main__":

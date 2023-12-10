@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF Grid</title>
+    <style>
+        /* Style the container div */
+        .gif-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+            gap: 20px; /* Adjust the gap between items */
+        }
+
+        /* Style each individual gif item */
+        .gif-item {
+            text-align: center;
+        }
+
+        .gif-item img {
+            max-width: 100%; /* Adjust the maximum width as needed */
+            max-height: 300px; /* Adjust the maximum height as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="gif-container">
+
+        <!-- GIF with label for arm_pos -->
+        <div class="gif-item">
+            <img src="assets/arm_pos.gif" alt="arm_pos">
+            <p>arm_pos</p>
+        </div>
+    
+        <!-- GIF with label for camera_pos -->
+        <div class="gif-item">
+            <img src="assets/camera_pos.gif" alt="camera_pos">
+            <p>camera_pos</p>
+        </div>
+    
+        <!-- GIF with label for floor_texture -->
+        <div class="gif-item">
+            <img src="assets/floor_texture.gif" alt="floor_texture">
+            <p>floor_texture</p>
+        </div>
+    
+        <!-- GIF with label for light -->
+        <div class="gif-item">
+            <img src="assets/light.gif" alt="light">
+            <p>light</p>
+        </div>
+    
+        <!-- GIF with label for object_pos -->
+        <div class="gif-item">
+            <img src="assets/object_pos.gif" alt="object_pos">
+            <p>object_pos</p>
+        </div>
+    
+        <!-- GIF with label for object_size -->
+        <div class="gif-item">
+            <img src="assets/object_size.gif" alt="object_size">
+            <p>object_size</p>
+        </div>
+    
+        <!-- GIF with label for object_texture -->
+        <div class="gif-item">
+            <img src="assets/object_texture.gif" alt="object_texture">
+            <p>object_texture</p>
+        </div>
+    
+        <!-- GIF with label for table_pos -->
+        <div class="gif-item">
+            <img src="assets/table_pos.gif" alt="table_pos">
+            <p>table_pos</p>
+        </div>
+    
+        <!-- GIF with label for table_texture -->
+        <div class="gif-item">
+            <img src="assets/table_texture.gif" alt="table_texture">
+            <p>table_texture</p>
+        </div>
+    
+    </div>
+</body>
+</html>

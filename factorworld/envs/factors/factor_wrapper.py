@@ -170,12 +170,11 @@ class FactorWrapper:
     def step(self, action):
         return self.env.step(action)
 
-    def reset(self, force_randomize_factor: bool = False):
+    def reset(self, force_randomize_factor: bool = False, **reset_kwargs):
         # NOTE: We reset the base (unwrapped) env first, in case the
         #       XML neeeds to be reloaded.
-        reset_kwargs = {}
         if isinstance(self.env, FactorWrapper):
-            reset_kwargs = dict(force_randomize_factor=force_randomize_factor)
+            reset_kwargs.update(force_randomize_factor=force_randomize_factor)
         obs = self.env.reset(**reset_kwargs)
 
         # Randomize factor.
@@ -198,6 +197,9 @@ class FactorWrapper:
 
     def render(self, **kwargs):
         return self.env.render(**kwargs)
+
+    def render_mode(self):
+        return self.env.render_mode
 
     # ----------------------------------------------------------------
     # SawyerXYZEnv

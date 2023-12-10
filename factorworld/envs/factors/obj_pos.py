@@ -71,8 +71,8 @@ class ObjectPosWrapper(FactorWrapper):
         self.object_init_pos = self._default_init_pos.copy()
         self.object_init_quat = self._default_init_quat.copy()
 
-    def reset(self, force_randomize_factor: bool = False):
-        super().reset(force_randomize_factor=force_randomize_factor)
+    def reset(self, force_randomize_factor: bool = False, **kwargs):
+        super().reset(force_randomize_factor=force_randomize_factor, **kwargs)
 
         # Reset object pos.
         self._set_object_pos(self.object_init_pos, self.object_init_quat)

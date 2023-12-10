@@ -43,6 +43,20 @@ class SawyerMocapBase(mjenv_gym):
         self.reset_mocap_welds()
         self.frame_skip = frame_skip
 
+        # Values are in the middle of range specified in
+        # CameraPosWrapper
+        camera = self.model.camera("movable")
+        phi = (2 * np.pi / 3 + 3 * np.pi / 4) / 2
+        theta = (np.pi / 6 + np.pi / 3) / 2
+        rad = 1.5
+        camera.pos = np.array(
+            [
+                rad * np.cos(phi) * np.sin(theta),
+                rad * np.sin(phi) * np.sin(theta),
+                rad * np.cos(theta),
+            ]
+        )
+
     def get_endeff_pos(self):
         return self.data.body("hand").xpos
 

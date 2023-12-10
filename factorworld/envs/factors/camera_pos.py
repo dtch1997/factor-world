@@ -22,7 +22,16 @@ from factorworld.envs.factors.factor_wrapper import FactorWrapper
 
 
 class CameraPosWrapper(FactorWrapper):
-    """Wrapper over MuJoCo environments that modifies camera position."""
+    """Wrapper over MuJoCo environments that modifies camera position.
+
+    Note: This wrapper modifies one of the cameras in the XML.
+
+    When rendering in `rgb_array` or `depth_array` mode the view
+    will be configured automatically.
+
+    However, if rendering in `human` mode, you will need to press Tab
+    a few times in order to switch to the movable camera
+    """
 
     def __init__(
         self,

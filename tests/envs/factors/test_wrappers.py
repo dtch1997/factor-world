@@ -15,6 +15,7 @@ factors = [
     "table_texture",
     "object_texture",
     "floor_texture",
+    "camera_pos",
 ]
 
 

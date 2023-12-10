@@ -24,7 +24,12 @@ from factorworld.envs.factors.factor_wrapper import FactorWrapper
 
 
 class TablePosWrapper(FactorWrapper):
-    """Wrapper over MuJoCo environments that modifies table position."""
+    """Wrapper over MuJoCo environments that modifies table position.
+
+    - Table, object, distractor, goal position are moved
+    - Hand init position is also moved
+    - Note: Base of Sawyer arm is not moved. Setting large ranges may result in task being infeasible
+    """
 
     def __init__(
         self,

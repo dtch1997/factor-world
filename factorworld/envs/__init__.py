@@ -67,18 +67,16 @@ def make_env_with_factors(
         "factors/factors_train.xml" if use_train_xml else "factors/factors_eval.xml"
     )
 
-    # Add includes to the XML, necessary for texture factors.
-    if not has_env_cls_model_name_been_set(env_cls):
-        # Points from .../metaworld/envs/assets_v2/sawyer_xyz
-        # To .../factorworld/envs/assets
-        base_xml_path = env_cls().model_name
-        incl_path = (
-            pathlib.Path("..")
-            / get_fw_asset_dir_relative_to_mw_asset_dir()
-            / factors_relative_path
-        )
-        xml_path = generate_xml(base_xml_path, include_paths=[str(incl_path)])
-        env_cls = set_env_cls_model_name(env_cls, xml_path)
+    # Points from .../metaworld/envs/assets_v2/sawyer_xyz
+    # To .../factorworld/envs/assets
+    base_xml_path = env_cls.MODEL_NAME
+    incl_path = (
+        pathlib.Path("..")
+        / get_fw_asset_dir_relative_to_mw_asset_dir()
+        / factors_relative_path
+    )
+    xml_path = generate_xml(base_xml_path, include_paths=[str(incl_path)])
+    env_kwargs.update(model_name=xml_path)
 
     # Construct base environment
     env = env_cls(**env_kwargs)

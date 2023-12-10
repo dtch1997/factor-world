@@ -2,8 +2,8 @@
 
 import pyrallis
 from dataclasses import dataclass
-from metaworld import MT1
-from factorworld.envs.factors import ALL_FACTORS
+from factorworld.envs import make_env_with_factors
+from factorworld.envs.tasks.sawyer_pick_place_v2 import SawyerPickPlaceEnvV2
 
 
 @dataclass
@@ -16,13 +16,11 @@ class Config:
 if __name__ == "__main__":
     config = pyrallis.parse(Config)
 
-    benchmark = MT1(config.domain)
-    env_constructor = benchmark.train_classes[config.domain]
-    base_env = env_constructor(render_mode=config.render_mode)
-    base_env.set_task(benchmark.train_tasks[0])
-    base_env.reset()
-
-    env = ALL_FACTORS[config.factor](base_env)
+    env_cls = SawyerPickPlaceEnvV2
+    env_kwargs = {"render_mode": "human"}
+    factor_kwargs = {config.factor: {}}
+    env = make_env_with_factors(env_cls, env_kwargs, factor_kwargs)
+    env.reset()
 
     for e in range(10):
         obs = env.reset()

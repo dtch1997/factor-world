@@ -51,6 +51,3 @@ class LightWrapper(FactorWrapper):
         """Sets to the given factor."""
         self.unwrapped.model.vis.headlight.ambient[:] = np.full((3,), value)
         self.unwrapped.model.vis.headlight.diffuse[:] = np.full((3,), value)
-
-    def __getattr__(self, name: str):
-        return getattr(self.env, name)

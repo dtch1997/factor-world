@@ -22,7 +22,16 @@ from factorworld.envs.factors.factor_wrapper import FactorWrapper
 
 
 class CameraPosWrapper(FactorWrapper):
-    """Wrapper over MuJoCo environments that modifies camera position."""
+    """Wrapper over MuJoCo environments that modifies camera position.
+
+    Note: This wrapper modifies one of the cameras in the XML.
+
+    When rendering in `rgb_array` or `depth_array` mode the view
+    will be configured automatically.
+
+    However, if rendering in `human` mode, you will need to press Tab
+    a few times in order to switch to the movable camera
+    """
 
     def __init__(
         self,
@@ -52,15 +61,21 @@ class CameraPosWrapper(FactorWrapper):
         return "camera_pos"
 
     def _set_to_factor(self, value: Tuple[float, float, float]):
-        """Sets to the given factor."""
-        raise NotImplementedError()
-        # assert self.unwrapped.camera_name == "movable"
-        # cam_id = self.unwrapped.model.camera_name2id(self.unwrapped.camera_name)
+        """Sets to the given factor.
 
-        # phi, theta, rad = value[0], value[1], value[2]
-        # pos = np.array([
-        #     rad * np.cos(phi) * np.sin(theta),
-        #     rad * np.sin(phi) * np.sin(theta),
-        #     rad * np.cos(theta),
-        # ])
-        # self.unwrapped.model.cam_pos[cam_id][:] = pos
+        Assumes a movable camera has been added using
+        factorworld.envs.xml_utils.generate_xml
+        """
+        # Set mujoco to render using movable camera
+        self.unwrapped.camera_name = "movable"
+
+        # Set camera config
+        camera = self.model.camera("movable")
+        phi, theta, rad = value[0], value[1], value[2]
+        camera.pos = np.array(
+            [
+                rad * np.cos(phi) * np.sin(theta),
+                rad * np.sin(phi) * np.sin(theta),
+                rad * np.cos(theta),
+            ]
+        )

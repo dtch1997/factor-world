@@ -7,9 +7,13 @@ authors = [
 ]
 dependencies = [
     "pyrallis>=0.3.1",
-    "metaworld @ git+https://github.com/Farama-Foundation/Metaworld.git@master",
     "numpy>=1.26.2",
     "lxml>=4.9.3",
+    "gymnasium>=0.29.0",
+    "mujoco<3.0.0",
+    "numpy>=1.18",
+    "scipy>=1.4.1",
+    "imageio>=2.33.0",
 ]
 requires-python = ">=3.10"
 readme = "README.md"

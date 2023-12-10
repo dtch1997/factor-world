@@ -6,7 +6,7 @@ Uses modern `mujoco` bindings and the `gymnasium` interface.
 [![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm-project.org)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![test](https://github.com/dtch1997/factor-world/actions/workflows/ci.yml/badge.svg)](https://github.com/dtch1997/factor-world/actions/workflows/ci.yml)
+[![test](https://github.com/dtch1997/factor-world/actions/workflows/ci.yaml/badge.svg)](https://github.com/dtch1997/factor-world/actions/workflows/ci.yaml)
 
 ## Citation
 

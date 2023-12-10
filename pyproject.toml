@@ -15,6 +15,10 @@ requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
 
+[project.urls]
+Homepage = "https://github.com/dtch1997/factor-world"
+Issues = "https://github.com/dtch1997/factor-world/issues"
+
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"

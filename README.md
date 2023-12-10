@@ -31,7 +31,7 @@ Please also consider citing this repository:
     month = {12},
     title = {{Factor-World}},
     url = {https://github.com/dtch1997/factor-world},
-    version = {0.0.1},
+    version = {0.1.0},
     year = {2023}
 }
 ```

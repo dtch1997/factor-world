@@ -41,6 +41,23 @@ from factorworld.envs import list_factors
 print(list_factors())
 ```
 
+## Factor-World
+
+### Factors
+
+Here is a visualization of some of the factors of variation
+<div style="display: flex; justify-content: space-between;">
+    <img src="docs/assets/table_texture.gif" alt="GIF 1" width="30%">
+    <img src="docs/assets/camera_pos.gif" alt="GIF 2" width="30%">
+    <img src="docs/assets/object_pos.gif" alt="GIF 3" width="30%">
+</div>
+
+For all visualizations please look at `docs/assets/*.gif`
+
+### Tasks
+
+Currently we have only implemented `SawyerPickPlaceEnvV2`. We are working on migrating more environments from Metaworld. Pull requests are welcome. 
+
 ## Citation
 
 Factor-World was proposed in [Decomposing the Generalization Gap in Imitation Learning for Visual Robotic Manipulation](https://sites.google.com/view/generalization-gap)

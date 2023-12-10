@@ -4,13 +4,9 @@ Extends Metaworld environments with 10 visual factors of variation.
 Uses modern `mujoco` bindings and the `gymnasium` interface. 
 
 [![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm-project.org)
-
-<!-- 
-TODO: enable CI, tests, linting
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![test](https://github.com/ethanluoyc/corax/actions/workflows/test.yml/badge.svg)](https://github.com/ethanluoyc/corax/actions/workflows/test.yml)
--->
 
 ## Citation
 
@@ -44,3 +40,4 @@ Please also consider citing this repository:
 
 This repository builds upon the following codebases:
 - Official Factor-World implementation: https://github.com/RLAgent/factor-world
+- Farama Foundation's Metaworld repository: https://github.com/Farama-Foundation/Metaworld

@@ -41,5 +41,5 @@ ALL_FACTORS: Dict[str, FactorWrapper] = {
     "object_size": ObjectSizeWrapper,
     # 'object_texture': ObjectTextureWrapper,
     "table_pos": TablePosWrapper,
-    # 'table_texture': TableTextureWrapper,
+    "table_texture": TableTextureWrapper,
 }

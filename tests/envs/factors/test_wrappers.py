@@ -6,7 +6,14 @@ from factorworld.envs.tasks.sawyer_pick_place_v2 import SawyerPickPlaceEnvV2
 from factorworld.envs import make_env_with_factors, list_factors
 
 domain = "pick-place-v2"
-factors = ["object_pos", "object_size", "table_pos", "arm_pos", "light"]
+factors = [
+    "object_pos",
+    "object_size",
+    "table_pos",
+    "arm_pos",
+    "light",
+    "table_texture",
+]
 
 
 @pytest.mark.parametrize("factor_name", list_factors())

@@ -17,16 +17,16 @@ from typing import List
 import gymnasium as gym
 from gymnasium import spaces
 
-from factorworld.envs.factors.xml_wrapper import XmlWrapper
+from factorworld.envs.factors.factor_wrapper import FactorWrapper
 
 
-class TableTextureWrapper(XmlWrapper):
+class TableTextureWrapper(FactorWrapper):
     """Wrapper over MuJoCo environments that modifies table texture."""
 
     def __init__(
         self,
         env: gym.Env,
-        texture_names: List[str] = ["clay.png"],
+        texture_names: List[str],
         seed: int = None,
         **kwargs,
     ):
@@ -37,7 +37,6 @@ class TableTextureWrapper(XmlWrapper):
           texture_names: Texture names to sample from
           seed: Random seed
         """
-        self._default_texture = None
         self.texture_names = texture_names
 
         super().__init__(
@@ -47,8 +46,6 @@ class TableTextureWrapper(XmlWrapper):
             **kwargs,
         )
 
-        breakpoint()
-
     @property
     def factor_name(self):
         return "table_texture"
@@ -56,9 +53,7 @@ class TableTextureWrapper(XmlWrapper):
     def _set_to_factor(self, value: int):
         """Sets to the given factor."""
 
-        if self._default_texture is None:
-            print(
-                "WARNING(object_size): Default values not set. "
-                "Not setting factor value."
-            )
-            return
+        texture_name = self.texture_names[value]
+        texture = self.model.texture(texture_name)
+        table_mat = self.model.material("table_wood")
+        table_mat.texid = texture.id

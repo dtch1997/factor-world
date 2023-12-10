@@ -85,8 +85,7 @@ def make_env_with_factors(
     texture_names = get_texture_names(
         full_factorworld_assets_path_for(factors_relative_path)
     )
-    # TODO: delete
-    texture_names = texture_names[:1]
+
     texture_wrapper_seeds = []
     for factor_name, env_kwargs in factor_kwargs.items():
         factor_cls = ALL_FACTORS[factor_name]

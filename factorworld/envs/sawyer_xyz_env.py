@@ -30,6 +30,7 @@ class SawyerMocapBase(mjenv_gym):
     }
 
     def __init__(self, model_name, frame_skip=5, render_mode=None):
+        self.model_name = model_name
         mjenv_gym.__init__(
             self,
             model_name,

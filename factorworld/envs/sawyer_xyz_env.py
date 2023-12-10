@@ -12,7 +12,7 @@ from gymnasium.spaces import Box, Discrete
 from gymnasium.utils import seeding
 from gymnasium.utils.ezpickle import EzPickle
 
-from metaworld.envs import reward_utils
+from factorworld.envs import reward_utils
 
 
 class SawyerMocapBase(mjenv_gym):

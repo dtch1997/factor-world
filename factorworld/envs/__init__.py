@@ -1,7 +1,6 @@
 import pathlib
 from typing import Any, Dict, List
 
-from metaworld.envs.mujoco.sawyer_xyz import sawyer_xyz_env
 from factorworld.envs.factors import ALL_FACTORS
 from factorworld.envs.xml_utils import generate_xml
 from factorworld.envs.xml_utils import get_texture_names
@@ -22,30 +21,6 @@ def has_env_cls_model_name_been_set(env_cls):
     # set_env_cls_model_name
     model_name = env_cls().model_name
     return "factors" in model_name
-
-
-def set_env_cls_model_name(env_cls: sawyer_xyz_env.SawyerXYZEnv, model_name: str):
-    """Sets the XML path of a SawyerXYZEnv class constructor
-
-    - When we next call env_cls(), it will use the updated model_name
-    """
-    # We need this because Farama Foundation Metaworld envs do not
-    # allow modifying model_path through init function
-
-    # Note: This is highly hacky
-    # - It relies on the fact that all Metaworld envs define 'model_name' property
-    #     E.g `SaywerPickPlaceEnvV2().model_name = <XML_PATH>`
-    #     Thus, we can instead patch it to be a fixed value
-    #     without changing the syntax or semantics
-    # - It also relies on the fact that model_name is the source of truth
-    #     for initializing a SawyerXYZEnv.
-
-    # Undesirable side-effects:
-    # - Permanently modifies the SawyerXYZEnv
-    #     Thus, future invocations need some way to remember that and skip
-    #     E.g. so that we don't include the same textures twice
-    env_cls.model_name = model_name
-    return env_cls
 
 
 def make_env_with_factors(

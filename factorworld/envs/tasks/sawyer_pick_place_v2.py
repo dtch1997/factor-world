@@ -2,7 +2,7 @@ import numpy as np
 from gymnasium.spaces import Box
 from scipy.spatial.transform import Rotation
 
-from metaworld.envs import reward_utils
+from factorworld.envs import reward_utils
 from factorworld.envs.asset_path_utils import full_metaworld_assets_v2_path_for
 from factorworld.envs.sawyer_xyz_env import (
     SawyerXYZEnv,

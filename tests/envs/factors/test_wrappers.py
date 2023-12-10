@@ -13,6 +13,7 @@ factors = [
     "arm_pos",
     "light",
     "table_texture",
+    "object_texture",
 ]
 
 

@@ -22,6 +22,7 @@ from factorworld.envs.factors.table_pos import TablePosWrapper
 from factorworld.envs.factors.obj_pos import ObjectPosWrapper
 from factorworld.envs.factors.obj_size import ObjectSizeWrapper
 from factorworld.envs.factors.table_texture import TableTextureWrapper
+from factorworld.envs.factors.object_texture import ObjectTextureWrapper
 
 from factorworld.envs.xml_utils import generate_xml
 from factorworld.envs.xml_utils import get_texture_names
@@ -39,7 +40,7 @@ ALL_FACTORS: Dict[str, FactorWrapper] = {
     "light": LightWrapper,
     "object_pos": ObjectPosWrapper,
     "object_size": ObjectSizeWrapper,
-    # 'object_texture': ObjectTextureWrapper,
+    "object_texture": ObjectTextureWrapper,
     "table_pos": TablePosWrapper,
     "table_texture": TableTextureWrapper,
 }

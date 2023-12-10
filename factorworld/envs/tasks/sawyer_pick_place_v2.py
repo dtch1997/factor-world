@@ -36,6 +36,8 @@ class SawyerPickPlaceEnvV2(SawyerXYZEnv):
         obj_low = (-0.1, 0.6, 0.02)
         obj_high = (0.1, 0.7, 0.02)
 
+        self.goal_space = Box(np.array(goal_low), np.array(goal_high))
+
         super().__init__(model_name, hand_low=hand_low, hand_high=hand_high, **kwargs)
 
         self.init_config = {

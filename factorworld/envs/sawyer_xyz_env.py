@@ -158,7 +158,7 @@ class SawyerXYZEnv(SawyerMocapBase, EzPickle):
         self.discrete_goals = []
         self.active_discrete_goal = None
 
-        self._partially_observable = True
+        self._partially_observable = False
 
         super().__init__(model_name, frame_skip=frame_skip, render_mode=render_mode)
 

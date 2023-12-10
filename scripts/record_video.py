@@ -6,7 +6,7 @@ import pathlib
 import moviepy.editor as mp
 from factorworld.envs import make_env_with_factors, list_factors
 from factorworld.envs.tasks.sawyer_pick_place_v2 import SawyerPickPlaceEnvV2
-from metaworld.policies.sawyer_pick_place_v2_policy import SawyerPickPlaceV2Policy
+from factorworld.policies import SawyerPickPlaceV2Policy
 from gymnasium.wrappers import record_video, time_limit
 
 

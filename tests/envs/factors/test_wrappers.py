@@ -16,6 +16,7 @@ factors = [
     "object_texture",
     "floor_texture",
     "camera_pos",
+    "goal_pos",
 ]
 
 

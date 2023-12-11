@@ -24,11 +24,13 @@ from factorworld.envs.factors.obj_size import ObjectSizeWrapper
 from factorworld.envs.factors.table_texture import TableTextureWrapper
 from factorworld.envs.factors.object_texture import ObjectTextureWrapper
 from factorworld.envs.factors.floor_texture import FloorTextureWrapper
+from factorworld.envs.factors.goal_pos import GoalPosWrapper
 
 ALL_FACTORS: Dict[str, FactorWrapper] = {
     "arm_pos": ArmPosWrapper,
     "camera_pos": CameraPosWrapper,
     # 'distractor_pos': DistractorPosWrapper,
+    "goal_pos": GoalPosWrapper,
     "floor_texture": FloorTextureWrapper,
     "light": LightWrapper,
     "object_pos": ObjectPosWrapper,
